@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lab 12</string>
+    <string name="default_calculated">0</string>
+    <string name="NA">N/A</string>
+</resources>
