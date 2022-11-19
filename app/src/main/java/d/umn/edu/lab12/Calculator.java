@@ -1,36 +1,36 @@
 package d.umn.edu.lab12;
 
-import androidx.lifecycle.ViewModelProvider;
+public class Calculator implements Contract.Model {
+    private int greatestMPG;
+    private int leastMPG;
+    private int calculated;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-public class Calculator extends Fragment {
-
-    private CalculatorViewModel mViewModel;
-
-    public static Calculator newInstance() {
-        return new Calculator();
+    Calculator() {
+        this.greatestMPG = 0;
+        this.leastMPG = 0;
+        this.calculated = 0;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+    public int calculateMPG(int firstReading, int lastReading, int gallons) {
+
+        this.calculated = (lastReading - firstReading) / 2;
+        return this.calculated;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CalculatorViewModel.class);
-        // TODO: Use the ViewModel
+    public void saveMPG() {
+        if (this.calculated > greatestMPG) this.greatestMPG = this.calculated;
+        if (this.calculated < leastMPG) this.leastMPG = this.calculated;
     }
 
+    @Override
+    public int getGreatestMPG() {
+        return this.greatestMPG;
+    }
+
+    @Override
+    public int getLeastMPG() {
+        return this.leastMPG;
+    }
 }
