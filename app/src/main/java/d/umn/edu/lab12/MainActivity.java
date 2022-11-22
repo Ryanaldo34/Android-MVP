@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements Contract.ViewMVP 
 
     @Override
     public int getPrevReading() {
-        return Integer.parseInt(prevReading.getText().toString());
+        return Integer.parseInt(this.prevReading.getText().toString());
     }
 
     @Override
